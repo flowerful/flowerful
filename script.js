@@ -7,20 +7,23 @@ plantApp.eventListener = () => {
   $("form").on("submit", function (e) {
     e.preventDefault();
     $("form").attr("aria-label", "submitted");
-    $("button[type=submit]").addClass("submitted");
-    const userColor = $("#plantColor").val();
-    if (isNaN(userColor)) {
-      $("#plantApp").find("input:text").val("");
+    $("input[type=submit]").addClass("submitted");
+    const userColour = $("#plantColour").val();
+    console.log("plantApp.eventListener -> userColor", userColour);
+    if (!isNaN(userColour)) {
+      $("#desiredColour").find("input:text").val("");
     } else {
-      plantApp.getPlants(userColor);
+      plantApp.getPlants(userColour);
     }
   });
 };
 
 plantApp.displayPlants = (plants) => {
   $("results").empty();
-  plants.data(function (plant) {
-    $("results").append(` 
+  const plant = plant.data;
+  console.log("plantApp.displayPlants -> plant", plant);
+  plant.forEach(function () {
+    $(".results").append(` 
       <div class="plantCard">  
         <h3> ${plants.data.common_name}</h3>
         <div class="imageContainer"> 
@@ -34,16 +37,18 @@ plantApp.displayPlants = (plants) => {
 plantApp.getPlants = (color) => {
   // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
   $.ajax({
-    url: `https://trefle.io/api/v1/species?filter%5Bflower_color%5D=${color}&token=${plantApp.token}`,
+    url: `https://trefle.io/api/v1/species?filter%5Bflower_color%5D=${color}&token=IqewWccMHBa3cnlYw2-TrtPrsxLhFmDY10kpsztBXk4`,
     // query contains the user data from selected; will change the url to point to the specified season through the power of template literal
     method: "GET",
-    dataType: "json",
+    dataType: "jsonp",
   }).then(function (apiResults) {
     plantApp.displayPlants(apiResults);
   });
 };
 
-plantApp.init = () => {};
+plantApp.init = () => {
+  plantApp.eventListener();
+};
 
 $(function () {
   plantApp.init();
