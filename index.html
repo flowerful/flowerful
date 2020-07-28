@@ -3,15 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sofia/Spencer Project 4</title>
+    <title>The Perfect Garden</title>
   </head>
   <body>
+    <header>
+      <div class="wrapper">
+        <h1>Flowerful</h1>
+        <form class="desiredColour">
+          <label for="plantColour"
+            >I am looking for plants in the colour of</label
+          >
+          <input type="text" id="plantColour" placeholder="Colour" required />
+          <button type="submit" class="submit" id="disable">Submit</button>
+        </form>
+      </div>
+    </header>
+    <main>
+      <div class="wrapper">
+        <div class="results">
+          <!-- Dynamic data goes here -->
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="wrapper">
+        <p>Copyright &copy; 2020 Flowerful</p>
+        <p>
+          Created @
+          <a href="https://junocollege.com/" target="_blank">Juno College</a>
+        </p>
+      </div>
+    </footer>
     <script
       src="https://code.jquery.com/jquery-3.4.0.min.js"
       integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="
       crossorigin="anonymous"
     ></script>
-    <script src="./scripts/script.js"></script>
+    <script src="../script.js"></script>
   </body>
 </html>
 
