@@ -1,5 +1,9 @@
+/*****************/
+/* Main Styles */ 
+/*****************/
+
 main {
-  background-color: #81b29a;
+  background-color: $backgroundColour;
   padding: 1rem 0 1rem 0;
   flex: 1 0 auto;
   position: relative;
@@ -14,15 +18,24 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   grid-gap: 1rem;
+  margin-bottom: 10rem;
 }
+
 .plantCard {
-  background-color: $darkestColor;
-  color: $lightestColor;
+  background-color: $darkestColour;
+  color: $lightestColour;
   align-items: center;
-  box-shadow: 2px 2px 2px #91abb6;
-  border: 5px solid $lightestColor;
+  // box-shadow: 2px 2px 2px #91abb6;
+  border: 5px solid $lightestColour;
   border-radius: 0.5em;
+  margin: 1rem;
+
+  img {
+    padding: 2rem;
+    border-radius: 1.2em;
+  }
+
   h3 {
-    padding: 1rem 0.5rem 1rem 0;
+    padding: 0 0 2rem 2rem;
   }
 }

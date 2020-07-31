@@ -1,6 +1,10 @@
 const plantApp = {};
 
-plantApp.token = "IqewWccMHBa3cnlYw2-TrtPrsxLhFmDY10kpsztBXk4";
+// We want to access the data array returned by the API 
+// We want to iterate over that array 
+// for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card 
+
+plantApp.token = "_DwpNdxID1_WtjGD4yqO323Mvt-DuQM0-i7D779pjP8";
 
 // submit button init listener
 plantApp.eventListener = () => {
@@ -28,7 +32,7 @@ plantApp.displayPlants = (plants) => {
       <div class="plantCard">  
           <div class="imageContainer"> 
           <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-        <h3> ${eachPlant.common_name}</h3>
+        <h3>${eachPlant.common_name}</h3>
         </div>
       </div>
     `);
