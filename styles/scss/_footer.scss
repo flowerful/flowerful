@@ -8,4 +8,12 @@ footer {
   padding: 1rem 0 1rem 0;
   color: $lightestColour;
   flex-shrink: 0;
+
+  a {
+    color: $lightestColour;
+  }
+
+  a:hover {
+    color: $accentColour;
+  }
 }

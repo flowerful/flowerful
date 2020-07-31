@@ -32,7 +32,7 @@ plantApp.displayPlants = (plants) => {
       <div class="plantCard">  
           <div class="imageContainer"> 
           <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-        <h3> ${eachPlant.common_name}</h3>
+        <h3>${eachPlant.common_name}</h3>
         </div>
       </div>
     `);
