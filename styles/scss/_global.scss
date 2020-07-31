@@ -1,3 +1,14 @@
+// variables
+
+$titleFont: "raleway", sans-serif;
+$textFont: "montserrat", sans-serif;
+
+$lightestColor: #f4f1de;
+$lightMidColor: #f2cc8f;
+$accentColor: #e07a5f;
+$darkestColor: #3d405b;
+$backgroundColor: #81b29a;
+
 body,
 h1,
 h2,
@@ -29,4 +40,20 @@ img {
   width: 85%;
   max-width: 1200px;
   margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-family: $textFont;
+  font-weight: 400;
+  font-size: 2rem;
+  background-color: $backgroundColor;
+  display: flex;
+  flex-direction: column;
 }

@@ -1,0 +1,78 @@
+header {
+  background-color: $lightestColor;
+  color: $backgroundColor;
+  height: 95vh;
+  min-height: 95vh;
+  position: relative;
+  flex: 1 0 auto;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    height: 100%;
+  }
+  svg {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    overflow: hidden;
+  }
+}
+
+h1 {
+  font-family: $titleFont;
+  font-weight: 400;
+  text-shadow: 2px 2px 2px $lightMidColor;
+  margin-bottom: 1rem;
+}
+
+input[type="text"] {
+  background-color: $lightMidColor;
+  border: 1px solid $backgroundColor;
+  border-radius: 0.25em;
+}
+
+input[type="submit"] {
+  background-color: $backgroundColor;
+  color: $lightestColor;
+  border-radius: 0.25em;
+  padding: 1rem 2rem 1rem 2rem;
+  box-shadow: 2px 2px 2px #91abb6;
+  position: relative;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  background-color: #9ac1af;
+}
+
+input[type="submit"]:active {
+  top: 1px;
+}
+
+::placeholder {
+  color: #a4a4a4;
+}
+
+// .waveContainer {
+//   position: relative;
+//   background: #81b29a;
+//   color: #fff;
+//   text-align: center;
+//   overflow: hidden;
+// }
+
+// @keyframes animateWave {
+//   0% {
+//     transform: scale(1, 0);
+//   }
+//   100% {
+//     transform: scale(1, 1);
+//   }
+// }
+// .waveContainer > svg {
+//   display: block;
+//   transform-origin: bottom;
+//   animation: animateWave 1000ms cubic-bezier(0.23, 1, 0.32, 1) forwards;
+// }
