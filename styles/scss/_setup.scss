@@ -1,3 +1,7 @@
+/*****************/
+/* Setup Snippet */ 
+/*****************/
+
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -221,3 +225,6 @@ html {
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+ol, ul { list-style: none;}
+a { text-decoration: none;}

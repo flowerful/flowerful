@@ -1,3 +1,6 @@
+/*****************/
+/* Setup Snippet */
+/*****************/
 html {
   line-height: 1.15;
   -ms-text-size-adjust: 100%;
@@ -269,6 +272,22 @@ html {
   overflow: hidden;
 }
 
+ol, ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+/*****************/
+/*   Variables   */
+/*****************/
+/* Font Families */
+/* Colours */
+/*****************/
+/* Global Styles */
+/*****************/
 body,
 h1,
 h2,
@@ -328,6 +347,9 @@ body {
           flex-direction: column;
 }
 
+/*****************/
+/* Header Styles */
+/*****************/
 header {
   background-color: #f4f1de;
   color: #81b29a;
@@ -381,14 +403,14 @@ input[type="submit"] {
   color: #f4f1de;
   border-radius: 0.25em;
   padding: 1rem 2rem 1rem 2rem;
-  -webkit-box-shadow: 2px 2px 2px #91abb6;
-          box-shadow: 2px 2px 2px #91abb6;
+  -webkit-box-shadow: 2px 2px 2px #3d405b;
+          box-shadow: 2px 2px 2px #3d405b;
   position: relative;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-  background-color: #9ac1af;
+  background-color: #e07a5f;
 }
 
 input[type="submit"]:active {
@@ -396,21 +418,24 @@ input[type="submit"]:active {
 }
 
 ::-webkit-input-placeholder {
-  color: #a4a4a4;
+  color: #3d405b;
 }
 
 :-ms-input-placeholder {
-  color: #a4a4a4;
+  color: #3d405b;
 }
 
 ::-ms-input-placeholder {
-  color: #a4a4a4;
+  color: #3d405b;
 }
 
 ::placeholder {
-  color: #a4a4a4;
+  color: #3d405b;
 }
 
+/*****************/
+/* Main Styles */
+/*****************/
 main {
   background-color: #81b29a;
   padding: 1rem 0 1rem 0;
@@ -432,6 +457,7 @@ main svg {
   -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-gap: 1rem;
+  margin-bottom: 10rem;
 }
 
 .plantCard {
@@ -440,16 +466,23 @@ main svg {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-shadow: 2px 2px 2px #91abb6;
-          box-shadow: 2px 2px 2px #91abb6;
   border: 5px solid #f4f1de;
   border-radius: 0.5em;
+  margin: 1rem;
+}
+
+.plantCard img {
+  padding: 2rem;
+  border-radius: 1.2em;
 }
 
 .plantCard h3 {
-  padding: 1rem 0.5rem 1rem 0;
+  padding: 0 0 2rem 2rem;
 }
 
+/*****************/
+/* Footer Styles */
+/*****************/
 footer {
   background-color: #3d405b;
   text-align: center;
@@ -458,3 +491,15 @@ footer {
   -ms-flex-negative: 0;
       flex-shrink: 0;
 }
+
+footer a {
+  color: #f4f1de;
+}
+
+footer a:hover {
+  color: #e07a5f;
+}
+
+/*****************/
+/* Media Queries */
+/*****************/

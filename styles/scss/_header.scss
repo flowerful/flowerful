@@ -1,10 +1,15 @@
+/*****************/
+/* Header Styles */ 
+/*****************/
+
 header {
-  background-color: $lightestColor;
-  color: $backgroundColor;
+  background-color: $lightestColour;
+  color: $backgroundColour;
   height: 95vh;
   min-height: 95vh;
   position: relative;
   flex: 1 0 auto;
+
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -12,6 +17,7 @@ header {
     align-items: left;
     height: 100%;
   }
+  
   svg {
     position: absolute;
     bottom: 0;
@@ -23,28 +29,28 @@ header {
 h1 {
   font-family: $titleFont;
   font-weight: 400;
-  text-shadow: 2px 2px 2px $lightMidColor;
+  text-shadow: 2px 2px 2px $lightMidColour;
   margin-bottom: 1rem;
 }
 
 input[type="text"] {
-  background-color: $lightMidColor;
-  border: 1px solid $backgroundColor;
+  background-color: $lightMidColour;
+  border: 1px solid $backgroundColour;
   border-radius: 0.25em;
 }
 
 input[type="submit"] {
-  background-color: $backgroundColor;
-  color: $lightestColor;
+  background-color: $backgroundColour;
+  color: $lightestColour;
   border-radius: 0.25em;
   padding: 1rem 2rem 1rem 2rem;
-  box-shadow: 2px 2px 2px #91abb6;
+  box-shadow: 2px 2px 2px $darkestColour;
   position: relative;
 }
 
 input[type="submit"]:hover,
 input[type="submit"]:focus {
-  background-color: #9ac1af;
+  background-color: $accentColour;
 }
 
 input[type="submit"]:active {
@@ -52,7 +58,7 @@ input[type="submit"]:active {
 }
 
 ::placeholder {
-  color: #a4a4a4;
+  color: $darkestColour;
 }
 
 // .waveContainer {
