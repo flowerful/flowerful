@@ -17,25 +17,34 @@ main {
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1rem;
-  margin-bottom: 10rem;
+  grid-gap: 2rem;
+  margin-bottom: 15rem;
 }
 
 .plantCard {
   background-color: $darkestColour;
   color: $lightestColour;
-  align-items: center;
-  // box-shadow: 2px 2px 2px #91abb6;
-  border: 5px solid $lightestColour;
+  display: flex;
+  justify-content: center;
+  box-shadow: 2px 2px 2px #91abb6;
   border-radius: 0.5em;
-  margin: 1rem;
+  padding: 20px; 
 
   img {
-    padding: 2rem;
-    border-radius: 1.2em;
+    border-radius: 0.5em;
+    border: 5px solid $lightestColour;
   }
 
   h3 {
     padding: 0 0 2rem 2rem;
+    margin-top: 2rem;
+  }
+
+  ul {
+    list-style: none; 
+    
+    li {
+      list-style: none;
+    }
   }
 }

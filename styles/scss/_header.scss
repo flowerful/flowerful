@@ -5,8 +5,8 @@
 header {
   background-color: $lightestColour;
   color: $backgroundColour;
-  height: 95vh;
-  min-height: 95vh;
+  height: 70vh;
+  min-height: 600px;
   position: relative;
   flex: 1 0 auto;
 
@@ -23,6 +23,7 @@ header {
     bottom: 0;
     text-align: center;
     overflow: hidden;
+    z-index: 0;
   }
 }
 
@@ -59,6 +60,10 @@ input[type="submit"]:active {
 
 ::placeholder {
   color: $darkestColour;
+}
+
+.desiredColour {
+  z-index: 2;
 }
 
 // .waveContainer {

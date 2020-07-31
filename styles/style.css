@@ -353,8 +353,8 @@ body {
 header {
   background-color: #f4f1de;
   color: #81b29a;
-  height: 95vh;
-  min-height: 95vh;
+  height: 70vh;
+  min-height: 600px;
   position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
@@ -383,6 +383,7 @@ header svg {
   bottom: 0;
   text-align: center;
   overflow: hidden;
+  z-index: 0;
 }
 
 h1 {
@@ -433,6 +434,10 @@ input[type="submit"]:active {
   color: #3d405b;
 }
 
+.desiredColour {
+  z-index: 2;
+}
+
 /*****************/
 /* Main Styles */
 /*****************/
@@ -456,28 +461,41 @@ main svg {
   display: grid;
   -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 1rem;
-  margin-bottom: 10rem;
+  grid-gap: 2rem;
+  margin-bottom: 15rem;
 }
 
 .plantCard {
   background-color: #3d405b;
   color: #f4f1de;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border: 5px solid #f4f1de;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-shadow: 2px 2px 2px #91abb6;
+          box-shadow: 2px 2px 2px #91abb6;
   border-radius: 0.5em;
-  margin: 1rem;
+  padding: 20px;
 }
 
 .plantCard img {
-  padding: 2rem;
-  border-radius: 1.2em;
+  border-radius: 0.5em;
+  border: 5px solid #f4f1de;
 }
 
 .plantCard h3 {
   padding: 0 0 2rem 2rem;
+  margin-top: 2rem;
+}
+
+.plantCard ul {
+  list-style: none;
+}
+
+.plantCard ul li {
+  list-style: none;
 }
 
 /*****************/
