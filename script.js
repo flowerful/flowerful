@@ -28,14 +28,16 @@ plantApp.displayPlants = (plants) => {
   const plant = plants.data;
   console.log("plantApp.displayPlants -> plant", plant);
   plant.forEach(function (eachPlant) {
-    $(".results").append(` 
-      <div class="plantCard">  
-          <div class="imageContainer"> 
-          <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-        <h3>${eachPlant.common_name}</h3>
+    if (eachPlant.image_url !== null) {
+      $(".results").append(` 
+        <div class="plantCard">  
+            <div class="imageContainer"> 
+            <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+          <h3>${eachPlant.common_name}</h3>
+          </div>
         </div>
-      </div>
-    `);
+      `);
+    }
   });
 };
 
