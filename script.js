@@ -26,9 +26,9 @@ plantApp.displayPlants = (plants) => {
   plant.forEach(function (eachPlant) {
     $(".results").append(` 
       <div class="plantCard">  
-        <h3> ${eachPlant.common_name}</h3>
-        <div class="imageContainer"> 
+          <div class="imageContainer"> 
           <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+        <h3> ${eachPlant.common_name}</h3>
         </div>
       </div>
     `);
