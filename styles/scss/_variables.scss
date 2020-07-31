@@ -2,12 +2,14 @@
 /*   Variables   */ 
 /*****************/
 
-/* Colours */ 
-$primaryColour: #170B47;
-$secondaryColour: #F19C79; 
-$supAccent: #B9E6FF; 
-$supAccentTwo: #D81E5B; 
-
 /* Font Families */ 
-$header: 'Montserrat', sans-serif;
-$body: 'Roboto', sans-serif;
+$titleFont: "raleway", sans-serif;
+$textFont: "montserrat", sans-serif;
+
+/* Colours */ 
+
+$lightestColour: #f4f1de;
+$lightMidColour: #f2cc8f;
+$accentColour: #e07a5f;
+$darkestColour: #3d405b;
+$backgroundColour: #81b29a;

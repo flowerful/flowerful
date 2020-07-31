@@ -2,8 +2,54 @@
 /* Global Styles */ 
 /*****************/
 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 .wrapper {
-  max-width: 1200px;
   width: 85%;
-  margin: 0 auto;  
+  max-width: 1200px;
+  margin: 0 auto;
+  flex: 1 0 auto;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  font-family: $textFont;
+  font-weight: 400;
+  font-size: 2rem;
+  background-color: $backgroundColor;
+  display: flex;
+  flex-direction: column;
 }

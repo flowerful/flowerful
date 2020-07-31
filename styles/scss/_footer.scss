@@ -1,9 +1,11 @@
-/************/
-/*  Footer  */ 
-/************/
+/*****************/
+/* Footer Styles */ 
+/*****************/
 
 footer {
+  background-color: $darkestColour;
   text-align: center;
-  background-color: $primaryColour;
-  padding: 10px 0;
+  padding: 1rem 0 1rem 0;
+  color: $lightestColour;
+  flex-shrink: 0;
 }

@@ -23,15 +23,16 @@ plantApp.eventListener = () => {
 };
 
 plantApp.displayPlants = (plants) => {
+  console.log("plantApp.displayPlants -> plants", plants);
   $("results").empty();
-  const plant = plant.data;
+  const plant = plants.data;
   console.log("plantApp.displayPlants -> plant", plant);
-  plant.forEach(function () {
+  plant.forEach(function (eachPlant) {
     $(".results").append(` 
       <div class="plantCard">  
-        <h3> ${plants.data.common_name}</h3>
-        <div class="imageContainer"> 
-          <img src="${plants.data.image_url}" alt="${plants.data.common_name}" class="plantImage"/>
+          <div class="imageContainer"> 
+          <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+        <h3> ${eachPlant.common_name}</h3>
         </div>
       </div>
     `);
@@ -41,10 +42,16 @@ plantApp.displayPlants = (plants) => {
 plantApp.getPlants = (color) => {
   // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
   $.ajax({
-    url: `https://trefle.io/api/v1/species?filter%5Bflower_color%5D=${color}&token=IqewWccMHBa3cnlYw2-TrtPrsxLhFmDY10kpsztBXk4`,
-    // query contains the user data from selected; will change the url to point to the specified season through the power of template literal
+    url: "https://proxy.hackeryou.com",
+    dataType: "json",
     method: "GET",
-    dataType: "jsonp",
+    data: {
+      reqUrl: `https://trefle.io/api/v1/species`,
+      params: {
+        token: plantApp.token,
+        "filter[flower_color]": color,
+      },
+    },
   }).then(function (apiResults) {
     plantApp.displayPlants(apiResults);
   });
@@ -57,3 +64,5 @@ plantApp.init = () => {
 $(function () {
   plantApp.init();
 });
+
+// species?filter%5Bflower_color%5D=${color}&token=${plantApp.token}
