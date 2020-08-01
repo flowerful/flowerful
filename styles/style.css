@@ -525,6 +525,37 @@ main svg {
   list-style: none;
 }
 
+.loadMoreButton {
+  text-align: center;
+}
+
+.loadMoreButton button {
+  bottom: 18rem;
+  margin-top: 8rem;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+  background-color: #3d405b;
+  color: #f4f1de;
+  border-radius: 0.25em;
+  padding: 1rem 2rem 1rem 2rem;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  border-color: #3d405b;
+}
+
+.loadMoreButton button:hover,
+.loadMoreButton button:focus {
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+}
+
+.loadMoreButton button:active {
+  bottom: 17.9rem;
+}
+
 /*****************/
 /* Footer Styles */
 /*****************/

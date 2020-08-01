@@ -1,10 +1,12 @@
 const plantApp = {};
 
-// We want to access the data array returned by the API
-// We want to iterate over that array
-// for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card
+// We want to access the data array returned by the API 
+// We want to iterate over that array 
+// for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card 
 
 plantApp.token = "_DwpNdxID1_WtjGD4yqO323Mvt-DuQM0-i7D779pjP8";
+
+plantApp.page = 1; 
 
 // submit button init listener
 plantApp.eventListener = () => {
@@ -14,8 +16,10 @@ plantApp.eventListener = () => {
     $("input[type=submit]").addClass("submitted");
     $(".confirmationCard").addClass("divHider");
     $(".confirmationCard").html("Request received! Gathering plants...");
+    $(".results").empty();
+    $(".loadMore").addClass("divHider");
+    plantApp.page = 1;
     const userColour = $("#plantColour").val();
-    console.log("plantApp.eventListener -> userColor", userColour);
     if (!isNaN(userColour)) {
       $("#desiredColour").find("input:text").val("");
     } else {
@@ -25,9 +29,21 @@ plantApp.eventListener = () => {
   });
 };
 
+plantApp.morePlantsListener = () => {
+  $("button").on("click", function () {
+    $(".loadMore").attr("aria-label", "submitted");
+    $(".loadMore").addClass("submitted");
+    plantApp.page ++;
+    const userColour = $("#plantColour").val();
+    if (!isNaN(userColour)) {
+      $("#desiredColour").find("input:text").val("");
+    } else {
+      plantApp.getPlants(userColour);
+    }
+  })
+}
+
 plantApp.displayPlants = (plants) => {
-  console.log("plantApp.displayPlants -> plants", plants);
-  $(".results").empty();
   const plant = plants.data;
   console.log("plantApp.displayPlants -> plant", plant);
   if (plant[0] === undefined) {
@@ -43,6 +59,7 @@ plantApp.displayPlants = (plants) => {
           </div>
         </div>
       `);
+      $(".loadMore").removeClass("divHider");
       }
     });
   }
@@ -59,6 +76,7 @@ plantApp.getPlants = (color) => {
       params: {
         token: plantApp.token,
         "filter[flower_color]": color,
+        page: plantApp.page 
       },
     },
   }).then(function (apiResults) {
@@ -66,8 +84,10 @@ plantApp.getPlants = (color) => {
   });
 };
 
+
 plantApp.init = () => {
   plantApp.eventListener();
+  plantApp.morePlantsListener();
 };
 
 $(function () {
