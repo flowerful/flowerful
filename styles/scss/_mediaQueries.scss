@@ -1,3 +1,15 @@
 /*****************/
-/* Media Queries */ 
+/* Media Queries */
 /*****************/
+
+@media (max-width: 655px) {
+  .confirmationCard {
+    width: 70%;
+  }
+}
+
+@media (max-width: 355px) {
+  .wrapper {
+    width: 90%;
+  }
+}

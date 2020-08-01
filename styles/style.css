@@ -347,6 +347,10 @@ body {
           flex-direction: column;
 }
 
+.divHider {
+  display: none;
+}
+
 /*****************/
 /* Header Styles */
 /*****************/
@@ -372,10 +376,12 @@ header .wrapper {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   height: 100%;
+  position: relative;
+  text-align: center;
 }
 
 header svg {
@@ -390,7 +396,7 @@ h1 {
   font-family: "raleway", sans-serif;
   font-weight: 400;
   text-shadow: 2px 2px 2px #f2cc8f;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 input[type="text"] {
@@ -407,6 +413,8 @@ input[type="submit"] {
   -webkit-box-shadow: 2px 2px 2px #3d405b;
           box-shadow: 2px 2px 2px #3d405b;
   position: relative;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
 }
 
 input[type="submit"]:hover,
@@ -438,6 +446,23 @@ input[type="submit"]:active {
   z-index: 2;
 }
 
+.confirmationCard {
+  background-color: #3d405b;
+  color: #f4f1de;
+  text-shadow: 1px 1px 2px #f2cc8f;
+  text-align: center;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  cursor: default;
+  border-radius: 0.5em;
+  padding: 20px;
+  width: 40%;
+  margin-top: 3rem;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 /*****************/
 /* Main Styles */
 /*****************/
@@ -459,23 +484,25 @@ main svg {
 .results {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(300px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  grid-gap: 2rem;
+  -ms-grid-columns: (minmax(290px, 1fr))[auto-fit];
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  grid-gap: 3rem;
   margin-bottom: 15rem;
 }
 
 .plantCard {
   background-color: #3d405b;
   color: #f4f1de;
+  text-shadow: 1px 1px 2px #f2cc8f;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-box-shadow: 2px 2px 2px #91abb6;
-          box-shadow: 2px 2px 2px #91abb6;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  cursor: default;
   border-radius: 0.5em;
   padding: 20px;
 }
@@ -521,3 +548,14 @@ footer a:hover {
 /*****************/
 /* Media Queries */
 /*****************/
+@media (max-width: 655px) {
+  .confirmationCard {
+    width: 70%;
+  }
+}
+
+@media (max-width: 355px) {
+  .wrapper {
+    width: 90%;
+  }
+}
