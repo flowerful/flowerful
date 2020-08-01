@@ -1,12 +1,12 @@
 const plantApp = {};
 
-// We want to access the data array returned by the API 
-// We want to iterate over that array 
-// for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card 
+// We want to access the data array returned by the API
+// We want to iterate over that array
+// for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card
 
 plantApp.token = "_DwpNdxID1_WtjGD4yqO323Mvt-DuQM0-i7D779pjP8";
 
-plantApp.page = 1; 
+plantApp.page = 1;
 
 // submit button init listener
 plantApp.eventListener = () => {
@@ -33,15 +33,15 @@ plantApp.morePlantsListener = () => {
   $("button").on("click", function () {
     $(".loadMore").attr("aria-label", "submitted");
     $(".loadMore").addClass("submitted");
-    plantApp.page ++;
+    plantApp.page++;
     const userColour = $("#plantColour").val();
     if (!isNaN(userColour)) {
       $("#desiredColour").find("input:text").val("");
     } else {
       plantApp.getPlants(userColour);
     }
-  })
-}
+  });
+};
 
 plantApp.displayPlants = (plants) => {
   const plant = plants.data;
@@ -52,14 +52,21 @@ plantApp.displayPlants = (plants) => {
     plant.forEach(function (eachPlant) {
       if (eachPlant.image_url !== null) {
         $(".results").append(` 
-        <div class="plantCard">  
-            <div class="imageContainer"> 
-            <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-          <h3>${eachPlant.common_name}</h3>
+        <div class="plantCard">
+          <div class='plantCardInner'>
+            <div class='plantCardFront'>  
+              <div class="imageContainer"> 
+                <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+                <h3>${eachPlant.common_name}</h3>
+              </div>
+            </div>
+            <div class='flipCardBack'>
+              <h3>more plant info</h3>
+            </div>
           </div>
         </div>
       `);
-      $(".loadMore").removeClass("divHider");
+        $(".loadMore").removeClass("divHider");
       }
     });
   }
@@ -76,14 +83,13 @@ plantApp.getPlants = (color) => {
       params: {
         token: plantApp.token,
         "filter[flower_color]": color,
-        page: plantApp.page 
+        page: plantApp.page,
       },
     },
   }).then(function (apiResults) {
     plantApp.displayPlants(apiResults);
   });
 };
-
 
 plantApp.init = () => {
   plantApp.eventListener();
