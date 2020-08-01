@@ -49,4 +49,34 @@ main {
       list-style: none;
     }
   }
+
+}
+
+.loadMoreButton {
+  text-align: center;
+  
+  button {
+    bottom: 18rem;
+    margin-top: 8rem;
+    text-align: center;
+    z-index: 2; 
+    position: relative;
+    background-color: $darkestColour;
+    color: $lightestColour;
+    border-radius: 0.25em;
+    padding: 1rem 2rem 1rem 2rem;
+    box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+    transition: all 0.2s;
+    border-color: $darkestColour;  
+  }
+
+  button:hover,
+  button:focus {
+    background-color: $accentColour;
+    border-color: $accentColour;
+    }
+
+  button:active {
+    bottom: 17.9rem;
+    }
 }
