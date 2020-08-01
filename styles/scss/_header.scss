@@ -27,6 +27,14 @@ header {
     overflow: hidden;
     z-index: 0;
   }
+  i {
+    position: sticky;
+    top: 5px;
+    left: 5px;
+    font-size: 4rem;
+    color: $darkestColour;
+    z-index: 2;
+  }
 }
 
 h1 {
@@ -40,6 +48,7 @@ input[type="text"] {
   background-color: $lightMidColour;
   border: 1px solid $backgroundColour;
   border-radius: 0.25em;
+  color: $darkestColour;
 }
 
 input[type="submit"] {
