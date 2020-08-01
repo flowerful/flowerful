@@ -1,12 +1,12 @@
 /*****************/
-/* Header Styles */ 
+/* Header Styles */
 /*****************/
 
 header {
   background-color: $lightestColour;
   color: $backgroundColour;
-  height: 95vh;
-  min-height: 95vh;
+  height: 70vh;
+  min-height: 600px;
   position: relative;
   flex: 1 0 auto;
 
@@ -17,7 +17,7 @@ header {
     align-items: left;
     height: 100%;
   }
-  
+
   svg {
     position: absolute;
     bottom: 0;

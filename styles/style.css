@@ -353,8 +353,8 @@ body {
 header {
   background-color: #f4f1de;
   color: #81b29a;
-  height: 95vh;
-  min-height: 95vh;
+  height: 70vh;
+  min-height: 600px;
   position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
