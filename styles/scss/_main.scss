@@ -14,6 +14,11 @@ main {
   }
 }
 
+h3 {
+  font-family: $titleFont;
+  font-weight: 400;
+}
+
 .results {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
@@ -22,25 +27,19 @@ main {
 }
 
 .plantCardFront {
-  background-color: $darkestColour;
-  color: $lightestColour;
-  text-shadow: 1px 1px 2px $lightMidColour;
-  display: flex;
-  justify-content: center;
   box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
-  cursor: default;
-  border-radius: 0.5em;
-  padding: 20px;
 
   img {
     border-radius: 0.5em;
     border: 5px solid $lightestColour;
+    align-self: center;
   }
 
   h3 {
-    padding: 0 0 2rem 2rem;
     margin-top: 2rem;
     display: inline-block;
+    font-family: $titleFont;
+    font-weight: 400;
   }
 
   ul {
@@ -86,25 +85,25 @@ main {
   background-color: transparent;
   min-width: 290px;
   min-height: 600px;
-  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  cursor: pointer;
+  perspective: 1000px;
 }
 
-/* This container is needed to position the front and back side */
 .plantCardInner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
   transition: transform 0.8s;
   transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.plantCard:hover .plantCardInner {
+.plantCard:hover .plantCardInner,
+.plantCard:focus .plantCardInner {
   transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .plantCardFront,
 .plantCardBack {
   position: absolute;
@@ -112,11 +111,54 @@ main {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
-}
-
-/* Style the back side */
-.plantCardBack {
+  cursor: default;
+  border-radius: 0.5em;
+  padding: 20px;
   background-color: $darkestColour;
   color: $lightestColour;
+  text-shadow: 1px 1px 2px $lightMidColour;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    text-align: left;
+    align-self: left;
+    font-family: $titleFont;
+    font-weight: 400;
+  }
+}
+
+.plantCardBack {
   transform: rotateY(180deg);
+  text-align: left;
+  li {
+    margin: 1rem 0 1rem 0;
+  }
+  position: relative;
+}
+
+.listButtonWrapper {
+  cursor: pointer;
+  .listButton {
+    background-color: $backgroundColour;
+    color: $lightestColour;
+    border-radius: 0.25em;
+    padding: 1rem 2rem 1rem 2rem;
+    box-shadow: 2px 2px 2px rgba(39, 35, 35, 0.664);
+    position: absolute;
+    bottom: 21px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    -webkit-transform: translateZ(0px);
+    -moz-transform: translateZ(0px);
+    transform: translateZ(0px);
+  }
+}
+
+.listButton:hover,
+.listButton:focus {
+  background-color: $accentColour;
+}
+
+.listButton:active {
+  bottom: 20px;
 }

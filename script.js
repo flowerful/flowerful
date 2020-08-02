@@ -4,7 +4,7 @@ const plantApp = {};
 // We want to iterate over that array
 // for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card
 
-plantApp.token = "_DwpNdxID1_WtjGD4yqO323Mvt-DuQM0-i7D779pjP8";
+plantApp.token = "IqewWccMHBa3cnlYw2-TrtPrsxLhFmDY10kpsztBXk4";
 
 plantApp.page = 1;
 
@@ -30,7 +30,7 @@ plantApp.eventListener = () => {
 };
 
 plantApp.morePlantsListener = () => {
-  $("button").on("click", function () {
+  $(".loadMoreButton").on("click", function () {
     $(".loadMore").attr("aria-label", "submitted");
     $(".loadMore").addClass("submitted");
     plantApp.page++;
@@ -43,9 +43,32 @@ plantApp.morePlantsListener = () => {
   });
 };
 
+plantApp.popoutSummon = () => {
+  $(".menuButton").on("click", function () {
+    $(".sideList").toggleClass("sideListOpen");
+    $(".desiredPlantsList").toggleClass("divHider");
+    $(".clearList").toggleClass("divHider");
+  });
+};
+
+plantApp.listAdder = () => {
+  $(".listButton").on("click", function () {
+    console.log("clicked");
+    const listElement = $(this).data("index");
+    $(".desiredPlantsList").append(`
+    <li class='listItem'>${listElement}</li>
+    `);
+  });
+};
+
+plantApp.listClear = () => {
+  $(".clearList").on("click", function () {
+    $(".desiredPlantsList").empty();
+  });
+};
+
 plantApp.displayPlants = (plants) => {
   const plant = plants.data;
-  console.log("plantApp.displayPlants -> plant", plant);
   if (plant[0] === undefined) {
     $(".confirmationCard").html(`No plants found with that colour!`);
   } else {
@@ -60,8 +83,16 @@ plantApp.displayPlants = (plants) => {
                 <h3>${eachPlant.common_name}</h3>
               </div>
             </div>
-            <div class='flipCardBack'>
-              <h3>more plant info</h3>
+            <div class='plantCardBack'>
+              <h3>${eachPlant.scientific_name}</h3>
+              <ul>
+                <li>discovered: ${eachPlant.year}</li>
+                <li>genus: ${eachPlant.genus}</li>
+                <li>family: ${eachPlant.family}</li>
+              </ul>
+              <div class='listButtonWrapper'>
+                <button class="listButton" data-index='${eachPlant.common_name}'>Add to favorites</button>
+              </div>
             </div>
           </div>
         </div>
@@ -94,6 +125,9 @@ plantApp.getPlants = (color) => {
 plantApp.init = () => {
   plantApp.eventListener();
   plantApp.morePlantsListener();
+  plantApp.popoutSummon();
+  plantApp.listAdder();
+  plantApp.listClear();
 };
 
 $(function () {
