@@ -19,7 +19,8 @@ plantApp.eventListener = () => {
     $(".results").empty();
     $(".loadMore").addClass("divHider");
     plantApp.page = 1;
-    const userColour = $("#plantColour").val();
+    let userColour = $("#plantColour").val();
+    userColour = userColour.toLowerCase();
     if (!isNaN(userColour)) {
       $("#desiredColour").find("input:text").val("");
     } else {
