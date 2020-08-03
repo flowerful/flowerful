@@ -80,11 +80,10 @@ plantApp.displayPlants = (plants) => {
             <div class='plantCardFront'>  
               <div class="imageContainer"> 
                 <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-                <h3>${eachPlant.common_name}</h3>
               </div>
+              <h3>${eachPlant.common_name}</h3>
             </div>
             <div class='plantCardBack'>
-
               <h3>${eachPlant.scientific_name}</h3>
               <ul>
                 <li>discovered: ${eachPlant.year}</li>
@@ -92,21 +91,20 @@ plantApp.displayPlants = (plants) => {
                 <li>family: ${eachPlant.family}</li>
               </ul>
               <div class='listButtonWrapper'>
-                <button class="listButton" data-index='${eachPlant.common_name}'>Add to favorites</button>
+                <button class="listButton" data-index='${eachPlant.common_name}'>Add to favourites</button>
               </div>
-
             </div>
           </div>
         </div>
       `);
-        $(".loadMore").removeClass("divHider");
       }
     });
+    $(".loadMore").removeClass("divHider");
+    plantApp.listAdder();
   }
 };
 
 plantApp.getPlants = (color) => {
-  // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
   $.ajax({
     url: "https://proxy.hackeryou.com",
     dataType: "json",
@@ -124,30 +122,80 @@ plantApp.getPlants = (color) => {
   });
 };
 
-plantApp.getMoreInfo = (color) => {
-  // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
-  $.ajax({
-    url: "https://proxy.hackeryou.com",
-    dataType: "json",
-    method: "GET",
-    data: {
-      reqUrl: `https://trefle.io/api/v1/specifications`,
-      params: {
-        token: plantApp.token,
-        "filter[flower_color]": color,
-        page: plantApp.page,
-      },
-    },
-  }).then(function (apiResults) {
-    plantApp.displayPlants(apiResults);
-  });
-};
+// make api call
+// iterate over promise object array
+// collect id from each returned plant
+// pass to second api call
+// collect more info and append to dom
+// plantApp.getMoreInfo = (plantID) => {
+//   $.ajax({
+//     url: "https://proxy.hackeryou.com",
+//     dataType: "json",
+//     method: "GET",
+//     data: {
+//       reqUrl: `https://trefle.io/api/v1/species`,
+//       params: {
+//         token: plantApp.token,
+//         id: plantID,
+//       },
+//     },
+//   }).then(function (moreApiResults) {
+//     plantApp.displayMoreInfo(moreApiResults);
+//   });
+// };
+// plantApp.displayMoreInfo = (plantInfo) => {
+//   const specificPlant = plantInfo.data;
+//   console.log("plantApp.displayMoreInfo -> specificPlant", specificPlant);
+//   $(".results").append(`
+//     <div class='plantCardBack'>
+//       <h3>${specificPlant.scientific_name}</h3>
+//         <ul>
+//           <li>discovered: ${specificPlant.year}</li>
+//           <li>genus: ${specificPlant.genus}</li>
+//           <li>family: ${specificPlant.family}</li>
+//           <li>Duration: ${specificPlant.duration}</li>
+//           <li>Maximum Height: ${specificPlant.maximum_height}</li>
+//           <li>Sunlight: ${specificPlant.light}</li>
+//           <li>Blooms: ${specificPlant.bloom_month}</li>
+//         </ul>
+//       <div class='listButtonWrapper'>
+//         <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
+//       </div>
+//     </div>
+//     </div>
+//     </div>
+//       `);
+// };
+// plantApp.displayPlants = (plants) => {
+//   const plant = plants.data;
+//   if (plant[0] === undefined) {
+//     $(".confirmationCard").html(`No plants found with that colour!`);
+//   } else {
+//     plant.forEach(function (eachPlant) {
+//       if (eachPlant.image_url !== null) {
+//         $(".results").append(`
+//         <div class="plantCard">
+//           <div class='plantCardInner'>
+//             <div class='plantCardFront'>
+//               <div class="imageContainer">
+//                 <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+//                 <h3>${eachPlant.common_name}</h3>
+//               </div>
+//             </div>
+//       `);
+//         plantApp.getMoreInfo(eachPlant.id);
+//         console.log("plantApp.displayPlants -> eachPlant.id", eachPlant.id);
+//       }
+//     });
+//     $(".loadMore").removeClass("divHider");
+//     plantApp.listAdder();
+//   }
+// };
 
 plantApp.init = () => {
   plantApp.eventListener();
   plantApp.morePlantsListener();
   plantApp.popoutSummon();
-  plantApp.listAdder();
   plantApp.listClear();
 };
 
