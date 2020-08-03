@@ -29,6 +29,10 @@ h3 {
 .plantCardFront {
   box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
 
+  .imageContainer {
+
+  }
+
   img {
     border-radius: 0.5em;
     border: 5px solid $lightestColour;
@@ -84,7 +88,7 @@ h3 {
 .plantCard {
   background-color: transparent;
   min-width: 290px;
-  min-height: 600px;
+  min-height: 630px;
   cursor: pointer;
   perspective: 1000px;
 }
@@ -162,3 +166,4 @@ h3 {
 .listButton:active {
   bottom: 20px;
 }
+
