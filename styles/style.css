@@ -351,6 +351,69 @@ body {
   display: none;
 }
 
+.sideList {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: #f2cc8f;
+  overflow-x: hidden;
+  padding-top: 60px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  border-radius: 0.5em;
+}
+
+.sideListOpen {
+  width: 250px !important;
+}
+
+.listItem {
+  border: 2px solid #e07a5f;
+  padding: 2rem;
+  color: #3d405b;
+  margin: 0 0.5rem 1rem 0.5rem;
+}
+
+.clearList {
+  background-color: #81b29a;
+  color: #f4f1de;
+  border-radius: 0.25em;
+  padding: 1rem 2rem 1rem 2rem;
+  -webkit-box-shadow: 2px 2px 2px #3d405b;
+          box-shadow: 2px 2px 2px #3d405b;
+  position: relative;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  margin: 2rem 0 0 5px;
+}
+
+.clearList:hover,
+.clearList:focus {
+  background-color: #e07a5f;
+  border-color: #e07a5f;
+}
+
+.clearList:active {
+  top: 1px;
+}
+
+.desiredPlantsList {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+h2 {
+  padding: 2rem 2rem 2rem 2rem;
+  color: #3d405b;
+  margin: 1rem 1rem 1rem 5px;
+  border: 2px solid #e07a5f;
+}
+
 /*****************/
 /* Header Styles */
 /*****************/
@@ -393,13 +456,25 @@ header svg {
 }
 
 header i {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 5px;
-  left: 5px;
-  font-size: 4rem;
-  color: #3d405b;
-  z-index: 2;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 5rem;
+  color: #e07a5f;
+  z-index: 4;
+  cursor: pointer;
+  text-shadow: 1px 1px 2px rgba(39, 35, 35, 0.664);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+header i:hover,
+header i:focus {
+  color: #f2cc8f;
+}
+
+header i:active {
+  font-size: 5.2rem;
 }
 
 h1 {
@@ -492,6 +567,11 @@ main svg {
   bottom: 0;
 }
 
+h3 {
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
+}
+
 .results {
   display: -ms-grid;
   display: grid;
@@ -502,33 +582,23 @@ main svg {
 }
 
 .plantCardFront {
-  background-color: #3d405b;
-  color: #f4f1de;
-  text-shadow: 1px 1px 2px #f2cc8f;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
           box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
-  cursor: default;
-  border-radius: 0.5em;
-  padding: 20px;
 }
 
 .plantCardFront img {
   border-radius: 0.5em;
   border: 5px solid #f4f1de;
-  display: block;
-  width: 100%;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
 }
 
 .plantCardFront h3 {
-  padding: 0 0 2rem 2rem;
   margin-top: 2rem;
   display: inline-block;
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
 }
 
 .plantCardFront ul {
@@ -575,34 +645,31 @@ main svg {
   background-color: transparent;
   min-width: 290px;
   min-height: 630px;
-  height: auto;
+  cursor: pointer;
   -webkit-perspective: 1000px;
           perspective: 1000px;
-  /* Remove this if you don't want the 3D effect */
-  display: inline-block;
 }
 
-/* This container is needed to position the front and back side */
 .plantCardInner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
+  text-align: left;
   -webkit-transition: -webkit-transform 0.8s;
   transition: -webkit-transform 0.8s;
   transition: transform 0.8s;
   transition: transform 0.8s, -webkit-transform 0.8s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
+  cursor: pointer;
 }
 
-/* Do an horizontal flip when you move the mouse over the flip box container */
-.plantCard:hover .plantCardInner {
+.plantCard:hover .plantCardInner,
+.plantCard:focus .plantCardInner {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
 
-/* Position the front and back side */
 .plantCardFront,
 .plantCardBack {
   position: absolute;
@@ -611,14 +678,69 @@ main svg {
   -webkit-backface-visibility: hidden;
   /* Safari */
   backface-visibility: hidden;
-}
-
-/* Style the back side */
-.plantCardBack {
+  cursor: default;
+  border-radius: 0.5em;
+  padding: 20px;
   background-color: #3d405b;
   color: #f4f1de;
+  text-shadow: 1px 1px 2px #f2cc8f;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.plantCardFront h3,
+.plantCardBack h3 {
+  text-align: left;
+  -ms-flex-item-align: left;
+      -ms-grid-row-align: left;
+      align-self: left;
+  font-family: "raleway", sans-serif;
+  font-weight: 400;
+}
+
+.plantCardBack {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
+  text-align: left;
+  position: relative;
+}
+
+.plantCardBack li {
+  margin: 1rem 0 1rem 0;
+}
+
+.listButtonWrapper {
+  cursor: pointer;
+}
+
+.listButtonWrapper .listButton {
+  background-color: #81b29a;
+  color: #f4f1de;
+  border-radius: 0.25em;
+  padding: 1rem 2rem 1rem 2rem;
+  -webkit-box-shadow: 2px 2px 2px rgba(39, 35, 35, 0.664);
+          box-shadow: 2px 2px 2px rgba(39, 35, 35, 0.664);
+  position: absolute;
+  bottom: 21px;
+  -webkit-transition: background-color 0.2s;
+  transition: background-color 0.2s;
+  cursor: pointer;
+  -webkit-transform: translateZ(0px);
+  transform: translateZ(0px);
+}
+
+.listButton:hover,
+.listButton:focus {
+  background-color: #e07a5f;
+}
+
+.listButton:active {
+  bottom: 20px;
 }
 
 /*****************/

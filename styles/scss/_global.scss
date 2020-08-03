@@ -57,3 +57,61 @@ body {
 .divHider {
   display: none;
 }
+
+.sideList {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  background-color: $lightMidColour;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.5s;
+  box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  border-radius: 0.5em;
+}
+
+.sideListOpen {
+  width: 250px !important;
+}
+
+.listItem {
+  border: 2px solid $accentColour;
+  padding: 2rem;
+  color: $darkestColour;
+  margin: 0 0.5rem 1rem 0.5rem;
+}
+
+.clearList {
+  background-color: $backgroundColour;
+  color: $lightestColour;
+  border-radius: 0.25em;
+  padding: 1rem 2rem 1rem 2rem;
+  box-shadow: 2px 2px 2px $darkestColour;
+  position: relative;
+  transition: all 0.2s;
+  margin: 2rem 0 0 5px;
+}
+
+.clearList:hover,
+.clearList:focus {
+  background-color: $accentColour;
+  border-color: $accentColour;
+}
+
+.clearList:active {
+  top: 1px;
+}
+
+.desiredPlantsList {
+  transition: all 0.2s;
+}
+
+h2 {
+  padding: 2rem 2rem 2rem 2rem;
+  color: $darkestColour;
+  margin: 1rem 1rem 1rem 5px;
+  border: 2px solid $accentColour;
+}

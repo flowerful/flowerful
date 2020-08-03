@@ -10,7 +10,17 @@
   </head>
   <body>
     <header>
-      <i class="fas fa-bars"></i>
+      <i class="fas fa-bars menuButton"></i>
+      <div class="sideList">
+        <h2>Favourite Plants</h2>
+        <ul class="desiredPlantsList divHider">
+          <!-- dynamic content goes here -->
+        </ul>
+        <div class='listButtonWrapper'>
+          <button class="clearList divHider">Clear List</button>
+        </div>
+        </div>
+      </div>
       <div class="wrapper">
         <h1>Flowerful</h1>
         <form class="desiredColour">
@@ -18,7 +28,7 @@
             >I am looking for plants in the colour of</label
           >
           <input type="text" id="plantColour" placeholder="colour" autocomplete="off" required/>
-         
+        
           <input type="submit" class="submit"></input>
         </form>
         <span class="confirmationCard divHider">Request received! Gathering plants...</span>
@@ -30,6 +40,10 @@
       <div class="wrapper">
         <div class="results">
           <!-- Dynamic data goes here -->
+        
+              <!-- <div class='listButtonWrapper'>
+                <button class="listButton" data-index='Indian Paintbrush'>Add to favorites</button>
+              </div> -->
         </div>
         <div class="loadMoreButton">
           <button class="loadMore divHider"> More plants? </button>
