@@ -521,6 +521,8 @@ main svg {
 .plantCardFront img {
   border-radius: 0.5em;
   border: 5px solid #f4f1de;
+  display: block;
+  width: 100%;
 }
 
 .plantCardFront h3 {
@@ -572,10 +574,12 @@ main svg {
 .plantCard {
   background-color: transparent;
   min-width: 290px;
-  min-height: 600px;
+  min-height: 630px;
+  height: auto;
   -webkit-perspective: 1000px;
           perspective: 1000px;
   /* Remove this if you don't want the 3D effect */
+  display: inline-block;
 }
 
 /* This container is needed to position the front and back side */

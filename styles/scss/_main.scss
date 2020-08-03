@@ -32,9 +32,15 @@ main {
   border-radius: 0.5em;
   padding: 20px;
 
+  .imageContainer {
+
+  }
+
   img {
     border-radius: 0.5em;
     border: 5px solid $lightestColour;
+    display: block;
+    width: 100%;
   }
 
   h3 {
@@ -85,8 +91,10 @@ main {
 .plantCard {
   background-color: transparent;
   min-width: 290px;
-  min-height: 600px;
+  min-height: 630px;
+  height: auto;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
+  display: inline-block; 
 }
 
 /* This container is needed to position the front and back side */
@@ -120,3 +128,4 @@ main {
   color: $lightestColour;
   transform: rotateY(180deg);
 }
+

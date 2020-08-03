@@ -60,8 +60,11 @@ plantApp.displayPlants = (plants) => {
                 <h3>${eachPlant.common_name}</h3>
               </div>
             </div>
-            <div class='flipCardBack'>
-              <h3>more plant info</h3>
+            <div class='plantCardBack'>
+              <h3>Duration: ${eachPlant.duration}</h3>
+              <h3>Maximum Height: ${eachPlant.maximum_height}</h3>
+              <h3>Sunlight: ${eachPlant.light}</h3>
+              <h3>Blooms: ${eachPlant.bloom_month}</h3>
             </div>
           </div>
         </div>
@@ -80,6 +83,25 @@ plantApp.getPlants = (color) => {
     method: "GET",
     data: {
       reqUrl: `https://trefle.io/api/v1/species`,
+      params: {
+        token: plantApp.token,
+        "filter[flower_color]": color,
+        page: plantApp.page,
+      },
+    },
+  }).then(function (apiResults) {
+    plantApp.displayPlants(apiResults);
+  });
+};
+
+plantApp.getMoreInfo = (color) => {
+  // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
+  $.ajax({
+    url: "https://proxy.hackeryou.com",
+    dataType: "json",
+    method: "GET",
+    data: {
+      reqUrl: `https://trefle.io/api/v1/specifications`,
       params: {
         token: plantApp.token,
         "filter[flower_color]": color,
