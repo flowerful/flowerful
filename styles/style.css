@@ -586,6 +586,20 @@ h3 {
           box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
 }
 
+.plantCardFront .imageContainer {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  text-align: center;
+}
+
+.plantCardFront .imageContainer img {
+  max-height: 400px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
 .plantCardFront img {
   border-radius: 0.5em;
   border: 5px solid #f4f1de;
@@ -644,7 +658,7 @@ h3 {
 .plantCard {
   background-color: transparent;
   min-width: 290px;
-  min-height: 630px;
+  min-height: 500px;
   cursor: pointer;
   -webkit-perspective: 1000px;
           perspective: 1000px;
@@ -661,7 +675,7 @@ h3 {
   transition: transform 0.8s, -webkit-transform 0.8s;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  cursor: pointer;
+  cursor: default;
 }
 
 .plantCard:hover .plantCardInner,
@@ -730,8 +744,6 @@ h3 {
   -webkit-transition: background-color 0.2s;
   transition: background-color 0.2s;
   cursor: pointer;
-  -webkit-transform: translateZ(0px);
-  transform: translateZ(0px);
 }
 
 .listButton:hover,
