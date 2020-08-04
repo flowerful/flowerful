@@ -196,7 +196,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
       </div>
     </div>
       `);
-  } else if (specificPlant.growth.light == null) {
+  } else if (specificPlant.growth.light === null) {
     $(`#${specificPlant.id}`).append(`
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
@@ -214,7 +214,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
       </div>
     </div>
       `);
-  } else if (specificPlant.growth.bloom_months == null) {
+  } else if (specificPlant.growth.bloom_months === null) {
     $(`#${specificPlant.id}`).append(`
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
@@ -232,7 +232,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
       </div>
     </div>
       `);
-  } else if (specificPlant.specifications.average_height.cm == null) {
+  } else if (specificPlant.specifications.average_height.cm === null) {
     $(`#${specificPlant.id}`).append(`
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
@@ -250,7 +250,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
       </div>
     </div>
       `);
-  } else if (specificPlant.specifications.maximum_height.cm == null) {
+  } else if (specificPlant.specifications.maximum_height.cm === null) {
     $(`#${specificPlant.id}`).append(`
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
