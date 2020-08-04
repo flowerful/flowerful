@@ -124,24 +124,24 @@ plantApp.getPlants = (color) => {
   });
 };
 
-plantApp.getMoreInfo = (color) => {
-  // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
-  $.ajax({
-    url: "https://proxy.hackeryou.com",
-    dataType: "json",
-    method: "GET",
-    data: {
-      reqUrl: `https://trefle.io/api/v1/specifications`,
-      params: {
-        token: plantApp.token,
-        "filter[flower_color]": color,
-        page: plantApp.page,
-      },
-    },
-  }).then(function (apiResults) {
-    plantApp.displayPlants(apiResults);
-  });
-};
+// plantApp.getMoreInfo = (color) => {
+//   // the information we provide to the function is a query so we name the parameter as such to make our code more human-legible
+//   $.ajax({
+//     url: "https://proxy.hackeryou.com",
+//     dataType: "json",
+//     method: "GET",
+//     data: {
+//       reqUrl: `https://trefle.io/api/v1/specifications`,
+//       params: {
+//         token: plantApp.token,
+//         "filter[flower_color]": color,
+//         page: plantApp.page,
+//       },
+//     },
+//   }).then(function (apiResults) {
+//     plantApp.displayPlants(apiResults);
+//   });
+// };
 
 plantApp.init = () => {
   plantApp.eventListener();
