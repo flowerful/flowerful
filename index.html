@@ -45,7 +45,7 @@
           <button class="loadMore divHider"> More plants? </button>
         </div>
       </div>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L48,240C96,256,192,288,288,272C384,256,480,192,576,181.3C672,171,768,213,864,240C960,267,1056,277,1152,261.3C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#3D405B" fill-opacity="1" d="M0,224L48,240C96,256,192,288,288,272C384,256,480,192,576,181.3C672,171,768,213,864,240C960,267,1056,277,1152,261.3C1248,245,1344,203,1392,181.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>
     </main>
 
     <footer>
@@ -65,30 +65,3 @@
     <script src="./script.js"></script>
   </body>
 </html>
-
-<!-- MVP
-    
-    initialize namespace
-    document ready
-    init function
-    app will listen for submit in header submit button
-    app will check to see whether form is complete and correct using html required tag and isNaN
-    if form has been filled incorrectly, app will clear text field
-    on correct submit, app will store user input from header text field and clear any previous submissions
-    app will use stored string as query in api call data object
-    on submit, app will send api call using instantiated query limiting results to 20
-    trefle api will return all database objects with user selected flower color
-    using .then, app will run dom manipulation function
-    app will store returned objects in array
-    using for loop, app will append each object to the main section of the page body in a results card, displaying plant common name, scientific name, and image
-
-
--->
-
-<!-- Stretch goal 1: city listener
-
-    app will listen for user submitted city in second text field
-    app will apply error checking code to both fields
-    on submit, app will store both submissions and use them both as queries
-
--->
