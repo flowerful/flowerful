@@ -68,43 +68,8 @@ plantApp.listClear = () => {
   });
 };
 
-plantApp.displayPlants = (plants) => {
-  const plant = plants.data;
-  if (plant[0] === undefined) {
-    $(".confirmationCard").html(`No plants found with that colour!`);
-  } else {
-    plant.forEach(function (eachPlant) {
-      if (eachPlant.image_url !== null) {
-        $(".results").append(` 
-        <div class="plantCard">
-          <div class='plantCardInner'>
-            <div class='plantCardFront'>  
-              <div class="imageContainer"> 
-                <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-              </div>
-              <h3>${eachPlant.common_name}</h3>
-            </div>
-            <div class='plantCardBack'>
-              <h3>${eachPlant.scientific_name}</h3>
-              <ul>
-                <li>discovered: ${eachPlant.year}</li>
-                <li>genus: ${eachPlant.genus}</li>
-                <li>family: ${eachPlant.family}</li>
-              </ul>
-              <div class='listButtonWrapper'>
-                <button class="listButton" data-index='${eachPlant.common_name}'>Add to favourites</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      `);
-      }
-    });
-    $(".loadMore").removeClass("divHider");
-    plantApp.listAdder();
-  }
-};
 
+// make api call to hackeryou proxy, avoiding CORS error
 plantApp.getPlants = (color) => {
   $.ajax({
     url: "https://proxy.hackeryou.com",
@@ -118,80 +83,92 @@ plantApp.getPlants = (color) => {
         page: plantApp.page,
       },
     },
+    // on api call completion, run dom manipulation function
   }).then(function (apiResults) {
     plantApp.displayPlants(apiResults);
   });
 };
 
-// make api call
-// iterate over promise object array
-// collect id from each returned plant
-// pass to second api call
-// collect more info and append to dom
-// plantApp.getMoreInfo = (plantID) => {
-//   $.ajax({
-//     url: "https://proxy.hackeryou.com",
-//     dataType: "json",
-//     method: "GET",
-//     data: {
-//       reqUrl: `https://trefle.io/api/v1/species`,
-//       params: {
-//         token: plantApp.token,
-//         id: plantID,
-//       },
-//     },
-//   }).then(function (moreApiResults) {
-//     plantApp.displayMoreInfo(moreApiResults);
-//   });
-// };
-// plantApp.displayMoreInfo = (plantInfo) => {
-//   const specificPlant = plantInfo.data;
-//   console.log("plantApp.displayMoreInfo -> specificPlant", specificPlant);
-//   $(".results").append(`
-//     <div class='plantCardBack'>
-//       <h3>${specificPlant.scientific_name}</h3>
-//         <ul>
-//           <li>discovered: ${specificPlant.year}</li>
-//           <li>genus: ${specificPlant.genus}</li>
-//           <li>family: ${specificPlant.family}</li>
-//           <li>Duration: ${specificPlant.duration}</li>
-//           <li>Maximum Height: ${specificPlant.maximum_height}</li>
-//           <li>Sunlight: ${specificPlant.light}</li>
-//           <li>Blooms: ${specificPlant.bloom_month}</li>
-//         </ul>
-//       <div class='listButtonWrapper'>
-//         <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
-//       </div>
-//     </div>
-//     </div>
-//     </div>
-//       `);
-// };
-// plantApp.displayPlants = (plants) => {
-//   const plant = plants.data;
-//   if (plant[0] === undefined) {
-//     $(".confirmationCard").html(`No plants found with that colour!`);
-//   } else {
-//     plant.forEach(function (eachPlant) {
-//       if (eachPlant.image_url !== null) {
-//         $(".results").append(`
-//         <div class="plantCard">
-//           <div class='plantCardInner'>
-//             <div class='plantCardFront'>
-//               <div class="imageContainer">
-//                 <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
-//                 <h3>${eachPlant.common_name}</h3>
-//               </div>
-//             </div>
-//       `);
-//         plantApp.getMoreInfo(eachPlant.id);
-//         console.log("plantApp.displayPlants -> eachPlant.id", eachPlant.id);
-//       }
-//     });
-//     $(".loadMore").removeClass("divHider");
-//     plantApp.listAdder();
-//   }
-// };
+plantApp.getMoreInfo = (plantID) => {
+  $.ajax({
+    url: "https://proxy.hackeryou.com",
+    dataType: "json",
+    method: "GET",
+    data: {
+      reqUrl: `https://trefle.io/api/v1/species/${plantID}`,
+      params: {
+        token: plantApp.token,
+      },
+    },
+  }).then(function (moreApiResults) {
+    plantApp.displayMoreInfo(moreApiResults);
+  });
+};
+
+plantApp.displayMoreInfo = (plantInfo) => {
+  const specificPlant = plantInfo.data;
+  // create the container for the card back
+  $(`#${specificPlant.id}`).append(`
+  <div class='plantCardBack'>
+    <h3>${specificPlant.scientific_name}</h3>
+    <ul>
+      <li>Discovered: ${specificPlant.year}</li>
+      <li>Genus: ${specificPlant.genus}</li>
+      <li>Family: ${specificPlant.family}</li>
+    </ul>
+    <div class='listButtonWrapper'>
+      <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
+    </div>
+  </div>
+  `);
+  // create a target variable for the plantCardBack ul
+  const $cardBackUl = $(`#${specificPlant.id} .plantCardBack ul`);
+  // check individual property to see if it's undefined.
+  // if the property !== null, append to the card back.
+  if (specificPlant.duration !== null && specificPlant.duration !== undefined) {
+    $cardBackUl.append(`<li>Duration: ${specificPlant.duration}</li>`);
+  } 
+  if (specificPlant.specifications.average_height.cm !== null && specificPlant.specifications.average_height.cm !== undefined) {
+    $cardBackUl.append(`<li>Average Height: ${specificPlant.specifications.average_height.cm} cm</li>`);
+  }
+  if (specificPlant.specifications.maximum_height.cm !== null && specificPlant.specifications.maximum_height.cm !== undefined) {
+    $cardBackUl.append(`<li>Maximum Height: ${specificPlant.specifications.maximum_height.cm} cm</li>`);
+  }
+  if (specificPlant.growth.light !== null && specificPlant.growth.light !== undefined) {
+    $cardBackUl.append(`<li>Required Light intensity (1-10): ${specificPlant.growth.light}</li>`);
+  } 
+  if (specificPlant.growth.bloom_months !== null && specificPlant.growth.bloom_months !== undefined) {
+    $cardBackUl.append(`<li>Blooms: ${specificPlant.growth.bloom_months}</li>`);
+  } 
+  plantApp.listAdder ();
+};
+
+plantApp.displayPlants = (plants) => {
+  const plant = plants.data;
+  if (plant.length === 0) {
+    $(".confirmationCard").html(`No plants found with that colour!`);
+  } else {
+    $(".confirmationCard").html("Plants gathered!");
+    plant.forEach(function (eachPlant) {
+      if (eachPlant.image_url !== null) {
+        $(".results").append(`
+        <div class="plantCard">
+          <div class='plantCardInner' id='${eachPlant.id}'>
+            <div class='plantCardFront'>
+              <div class="imageContainer">
+                <img src="${eachPlant.image_url}" alt="${eachPlant.common_name}" class="plantImage"/>
+                <h3>${eachPlant.common_name}</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      `);
+        plantApp.getMoreInfo(eachPlant.id);
+      }
+    });
+    $(".loadMore").removeClass("divHider");
+  }
+};
 
 plantApp.init = () => {
   plantApp.eventListener();
@@ -204,4 +181,3 @@ $(function () {
   plantApp.init();
 });
 
-// species?filter%5Bflower_color%5D=${color}&token=${plantApp.token}
