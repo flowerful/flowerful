@@ -418,6 +418,10 @@ h2 {
   border: 2px solid #e07a5f;
 }
 
+svg {
+  z-index: 0;
+}
+
 /*****************/
 /* Header Styles */
 /*****************/
@@ -664,6 +668,7 @@ h3 {
   cursor: pointer;
   -webkit-perspective: 1000px;
           perspective: 1000px;
+  z-index: 2;
 }
 
 .plantCardInner {
