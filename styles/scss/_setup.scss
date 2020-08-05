@@ -1,5 +1,5 @@
 /*****************/
-/* Setup Snippet */ 
+/* Setup Snippet */
 /*****************/
 
 html {
@@ -192,15 +192,6 @@ template {
   display: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: "";
-  clear: both;
-  height: 0;
-}
-
 html {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -226,5 +217,10 @@ html {
   overflow: hidden;
 }
 
-ol, ul { list-style: none;}
-a { text-decoration: none;}
+ol,
+ul {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
