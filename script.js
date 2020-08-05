@@ -143,9 +143,9 @@ plantApp.displayMoreInfo = (plantInfo) => {
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
         <ul class='plantInfo'>
-          <li>discovered: ${specificPlant.year}</li>
-          <li>genus: ${specificPlant.genus}</li>
-          <li>family: ${specificPlant.family}</li>
+          <li>Discovered: ${specificPlant.year}</li>
+          <li>Genus: ${specificPlant.genus}</li>
+          <li>Family: ${specificPlant.family}</li>
         </ul>
       <div class='listButtonWrapper'>
         <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
@@ -155,27 +155,27 @@ plantApp.displayMoreInfo = (plantInfo) => {
   // api does not always return below data; check if present before appending
   if (specificPlant.duration !== null) {
     $(`#${specificPlant.id} .plantInfo`).append(`
-      <li>duration: ${specificPlant.duration}</li>
+      <li>Duration: ${specificPlant.duration}</li>
     `);
   }
   if (specificPlant.specifications.average_height.cm !== null) {
     $(`#${specificPlant.id} .plantInfo`).append(`
-      <li>average height: ${specificPlant.specifications.average_height.cm} cm</li>
+      <li>Average height: ${specificPlant.specifications.average_height.cm} cm</li>
     `);
   }
   if (specificPlant.specifications.maximum_height.cm !== null) {
     $(`#${specificPlant.id} .plantInfo`).append(`
-      <li>maximum height: ${specificPlant.specifications.maximum_height.cm} cm</li>
+      <li>Maximum height: ${specificPlant.specifications.maximum_height.cm} cm</li>
     `);
   }
   if (specificPlant.growth.bloom_months !== null) {
     $(`#${specificPlant.id} .plantInfo`).append(`
-      <li>blooms during: ${specificPlant.growth.bloom_months}</li>
+      <li>Blooms during: ${specificPlant.growth.bloom_months}</li>
     `);
   }
   if (specificPlant.growth.light !== null) {
     $(`#${specificPlant.id} .plantInfo`).append(`
-      <li>required light intensity (1-10): ${specificPlant.growth.light}</li>
+      <li>Required light intensity (1-10): ${specificPlant.growth.light}</li>
     `);
   }
   if (specificPlant.id === plantApp.lastPlant) {
