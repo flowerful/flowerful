@@ -805,6 +805,13 @@ footer a:hover {
 /*****************/
 /* Media Queries */
 /*****************/
+@media (max-width: 960px) {
+  .instructions {
+    width: 90% !important;
+    font-size: 1.75rem !important;
+  }
+}
+
 @media (max-width: 655px) {
   .confirmationCard {
     width: 70%;
