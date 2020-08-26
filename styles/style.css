@@ -428,6 +428,18 @@ header {
           flex: 1 0 auto;
 }
 
+header p {
+  width: 40%;
+  color: #f4f1de;
+  background-color: #3d405b;
+  padding: 2rem;
+  border-radius: 0.5em;
+  margin: 1rem 0;
+  z-index: 1;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+}
+
 header .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -678,7 +690,8 @@ h3 {
 }
 
 .plantCard:hover .plantCardInner,
-.plantCard:focus .plantCardInner {
+.plantCard:focus .plantCardInner,
+.plantCard:active .plantCardInner {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }

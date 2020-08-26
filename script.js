@@ -20,6 +20,8 @@ plantApp.eventListener = () => {
     $("input[type=submit]").addClass("submitted");
     // hide input confirmation if previous search has occured
     $(".confirmationCard").addClass("divHider");
+    // hide instructions on search
+    $(".instructions").addClass("divHider");
     // reset input confirmation text
     $(".confirmationCard").html("Request received! Gathering plants...");
     // empty previous search results
