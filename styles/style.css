@@ -237,15 +237,6 @@ template {
   display: none;
 }
 
-.clearfix:after {
-  visibility: hidden;
-  display: block;
-  font-size: 0;
-  content: "";
-  clear: both;
-  height: 0;
-}
-
 html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -272,7 +263,8 @@ html {
   overflow: hidden;
 }
 
-ol, ul {
+ol,
+ul {
   list-style: none;
 }
 
@@ -372,6 +364,10 @@ body {
   width: 250px !important;
 }
 
+.menuButtonOpen {
+  margin-left: 175px !important;
+}
+
 .listItem {
   border: 2px solid #e07a5f;
   padding: 2rem;
@@ -414,6 +410,10 @@ h2 {
   border: 2px solid #e07a5f;
 }
 
+svg {
+  z-index: 0;
+}
+
 /*****************/
 /* Header Styles */
 /*****************/
@@ -426,6 +426,18 @@ header {
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
+}
+
+header p {
+  width: 40%;
+  color: #f4f1de;
+  background-color: #3d405b;
+  padding: 2rem;
+  border-radius: 0.5em;
+  margin: 1rem 0;
+  z-index: 1;
+  -webkit-box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+          box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
 }
 
 header .wrapper {
@@ -622,7 +634,6 @@ h3 {
 
 .plantCardFront h3 {
   margin-top: 2rem;
-  display: inline-block;
   font-family: "raleway", sans-serif;
   font-weight: 400;
 }
@@ -666,7 +677,6 @@ h3 {
   bottom: 17.9rem;
 }
 
-/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .plantCard {
   background-color: transparent;
   min-width: 290px;
@@ -674,6 +684,7 @@ h3 {
   cursor: pointer;
   -webkit-perspective: 1000px;
           perspective: 1000px;
+  z-index: 2;
 }
 
 .plantCardInner {
@@ -691,7 +702,8 @@ h3 {
 }
 
 .plantCard:hover .plantCardInner,
-.plantCard:focus .plantCardInner {
+.plantCard:focus .plantCardInner,
+.plantCard:active .plantCardInner {
   -webkit-transform: rotateY(180deg);
           transform: rotateY(180deg);
 }
@@ -702,7 +714,6 @@ h3 {
   width: 100%;
   height: 100%;
   -webkit-backface-visibility: hidden;
-  /* Safari */
   backface-visibility: hidden;
   cursor: default;
   border-radius: 0.5em;
@@ -738,6 +749,10 @@ h3 {
 
 .plantCardBack li {
   margin: 1rem 0 1rem 0;
+}
+
+.plantCardBack h3 {
+  border-bottom: 1px solid #f4f1de;
 }
 
 .listButtonWrapper {

@@ -77,6 +77,10 @@ body {
   width: 250px !important;
 }
 
+.menuButtonOpen {
+  margin-left: 175px !important;
+}
+
 .listItem {
   border: 2px solid $accentColour;
   padding: 2rem;
@@ -114,4 +118,8 @@ h2 {
   color: $darkestColour;
   margin: 1rem 1rem 1rem 5px;
   border: 2px solid $accentColour;
+}
+
+svg {
+  z-index: 0;
 }

@@ -10,6 +10,17 @@ header {
   position: relative;
   flex: 1 0 auto;
 
+  p {
+    width: 40%;
+    color: $lightestColour;
+    background-color: $darkestColour;
+    padding: 2rem;
+    border-radius: 0.5em;
+    margin: 1rem 0;
+    z-index: 1;
+    box-shadow: 5px 5px 5px rgba(39, 35, 35, 0.664);
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
