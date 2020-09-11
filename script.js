@@ -38,7 +38,9 @@ plantApp.eventListener = () => {
     userColour = userColour.toLowerCase();
     // check if user has typed integers; if so, reset field
     if (!isNaN(userColour)) {
-      $("#desiredColour").find("input:text").val("");
+      $("input:text").val("");
+      $(".confirmationCard").removeClass("divHider");
+      $(".confirmationCard").html("Please input a valid colour!");
       // on valid input, make api call
     } else {
       $(".confirmationCard").removeClass("divHider");
@@ -121,7 +123,7 @@ plantApp.getPlants = (color) => {
     })
     .catch(function (error) {
       $(".confirmationCard").html("No plants found with that color!");
-      $("#desiredColour").find("input:text").val("");
+      $("input:text").val("");
     });
 };
 
