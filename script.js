@@ -115,9 +115,13 @@ plantApp.getPlants = (color) => {
       },
     },
     // on api call completion, run dom manipulation function
-  }).then(function (apiResults) {
-    plantApp.displayPlants(apiResults);
-  });
+  })
+    .then(function (apiResults) {
+      plantApp.displayPlants(apiResults);
+    })
+    .catch(function (error) {
+      $(".confirmationCard").html("No plants found with that color!");
+    });
 };
 
 // second api call to pull more detailed objet avialable for individual species
