@@ -87,19 +87,33 @@ plantApp.listAdder = () => {
   // re-attach click event
   $(".listButton").on("click", function () {
     // store common name held in button data index
-    const listElement = $(this).data("index");
+    const listElementObj = $(this).data("index");
     // append text to favourites list
-    $(".desiredPlantsList").append(`
-    <li class='listItem'>${listElement}</li>
-    `);
+    plantApp.dbRef.push(`${listElementObj}`);
   });
 };
 
-// listen for user click on list clear button; on click, reset list
-plantApp.listClear = () => {
-  $(".clearList").on("click", function () {
-    $(".desiredPlantsList").empty();
+plantApp.listDisplay = () => {
+  plantApp.dbRef.on("value", (data) => {
+    const listData = data.val();
+
+    const arrayofLists = [];
+
+    for (prop in listData) {
+      arrayofLists.push(`<li class='listItem'>${listData[prop]}</li>`);
+    }
+    $(".desiredPlantsList").html(arrayofLists);
+    // listen for user click on list clear button; on click, reset list
+    $(".clearList").on("click", function () {
+      for (prop in listData) {
+        plantApp.deleteItem(prop);
+      }
+    });
   });
+};
+
+plantApp.deleteItem = (plantID) => {
+  plantApp.dbRef.child(plantID).remove();
 };
 
 // make api call to hackeryou proxy, avoiding CORS error
@@ -233,8 +247,25 @@ plantApp.init = () => {
   plantApp.eventListener();
   plantApp.morePlantsListener();
   plantApp.popoutSummon();
-  plantApp.listClear();
+  plantApp.listDisplay();
 };
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyDzjIZmcULLQ8OQvASimp_ooEEloacBfL0",
+  authDomain: "flowerful-cf847.firebaseapp.com",
+  databaseURL: "https://flowerful-cf847.firebaseio.com",
+  projectId: "flowerful-cf847",
+  storageBucket: "flowerful-cf847.appspot.com",
+  messagingSenderId: "811358542269",
+  appId: "1:811358542269:web:769040e84ddd9788049ad4",
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// create firebase db reference
+
+plantApp.dbRef = firebase.database().ref();
 
 // run init function on document ready
 $(function () {
