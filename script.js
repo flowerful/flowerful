@@ -121,6 +121,7 @@ plantApp.getPlants = (color) => {
     })
     .catch(function (error) {
       $(".confirmationCard").html("No plants found with that color!");
+      $("#desiredColour").find("input:text").val("");
     });
 };
 
