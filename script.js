@@ -171,7 +171,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
           <li>Family: ${specificPlant.family}</li>
         </ul>
       <div class='listButtonWrapper'>
-        <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
+        <button class="listButton" data-index='${specificPlant.common_name}' aria-label="add plant to favourites list" tabIndex="0">Add to favorites</button>
       </div>
     </div>
   `);
@@ -223,7 +223,7 @@ plantApp.displayPlants = (plants) => {
       if (eachPlant.image_url !== null) {
         // mark each card with id number of specific plant for subsequent appender function's reference
         $(".results").append(`
-        <div class="plantCard">
+        <div class="plantCard" tabIndex="0">
           <div class='plantCardInner' id='${eachPlant.id}'>
             <div class='plantCardFront'>
               <div class="imageContainer">
