@@ -223,7 +223,7 @@ plantApp.displayPlants = (plants) => {
       if (eachPlant.image_url !== null) {
         // mark each card with id number of specific plant for subsequent appender function's reference
         $(".results").append(`
-        <div class="plantCard">
+        <div class="plantCard" tabIndex="0">
           <div class='plantCardInner' id='${eachPlant.id}'>
             <div class='plantCardFront'>
               <div class="imageContainer">
