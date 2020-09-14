@@ -171,7 +171,7 @@ plantApp.displayMoreInfo = (plantInfo) => {
           <li>Family: ${specificPlant.family}</li>
         </ul>
       <div class='listButtonWrapper'>
-        <button class="listButton" data-index='${specificPlant.common_name}'>Add to favorites</button>
+        <button class="listButton" data-index='${specificPlant.common_name}' aria-label="add plant to favourites list" tabIndex="0">Add to favorites</button>
       </div>
     </div>
   `);
