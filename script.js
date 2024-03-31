@@ -2,7 +2,7 @@
 const plantApp = {};
 
 // declare global variable for api key
-plantApp.token = "Nk4_i1-kPywdBoYzOHoPSfEHN6MOmN51Ab6rxkg06Bg";
+plantApp.token = "TFQqgRN3_95KQCSBiSlLBUHUv0_kOs8zieHRszg1ETE";
 
 // declare global variable for api pagination
 plantApp.page = 1;
