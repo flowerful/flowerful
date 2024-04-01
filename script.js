@@ -4,7 +4,7 @@ const plantApp = {};
 // We want to iterate over that array
 // for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card
 
-plantApp.token = "Nk4_i1-kPywdBoYzOHoPSfEHN6MOmN51Ab6rxkg06Bg";
+plantApp.token = "TFQqgRN3_95KQCSBiSlLBUHUv0_kOs8zieHRszg1ETE";
 
 plantApp.page = 1;
 
