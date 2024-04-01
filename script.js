@@ -1,11 +1,14 @@
+// declare namespace
 const plantApp = {};
 
 // We want to access the data array returned by the API
 // We want to iterate over that array
 // for the object at each array position we want to access the common name and image url in order to append them to the DOM as a card
 
+// declare global variable for api key
 plantApp.token = "TFQqgRN3_95KQCSBiSlLBUHUv0_kOs8zieHRszg1ETE";
 
+// declare global variable for api pagination
 plantApp.page = 1;
 
 // listen for user click on submit button
@@ -89,11 +92,11 @@ plantApp.listClear = () => {
   });
 };
 
-// // read and display api data
+// read and display api data
 // plantApp.displayPlants = (plants) => {
-//   // access and store data array in returned object
+//   access and store data array in returned object
 //   const plant = plants.data;
-//   // alert user if search is unsuccessful
+//   alert user if search is unsuccessful
 //   if (plant[0] === undefined) {
 //     $(".confirmationCard").html(`No plants found with that colour!`);
 //   } else {
@@ -127,9 +130,9 @@ plantApp.listClear = () => {
 //       `);
 //       }
 //     });
-//     // reveal load more button
+//      reveal load more button
 //     $(".loadMore").removeClass("divHider");
-//     // attach event listener to add to favourites buttons
+//     attach event listener to add to favourites buttons
 //     plantApp.listAdder();
 //   }
 // };
@@ -160,6 +163,7 @@ plantApp.getPlants = (color) => {
 // pass to second api call
 // collect more info and append to dom
 
+// second api call to pull more detailed objet avialable for individual species
 plantApp.getMoreInfo = (plantID) => {
   $.ajax({
     url: "https://proxy.hackeryou.com",
@@ -172,13 +176,16 @@ plantApp.getMoreInfo = (plantID) => {
       },
     },
   }).then(function (moreApiResults) {
+     // begin second append function for new data
     plantApp.displayMoreInfo(moreApiResults);
   });
 };
 
+
 plantApp.displayMoreInfo = (plantInfo) => {
   const specificPlant = plantInfo.data;
   if (specificPlant.duration === null) {
+     // append back of card info to dom with info from second api call. appender function knows where to append from reference to id of previously-appended card front.
     $(`#${specificPlant.id}`).append(`
     <div class='plantCardBack'>
       <h3>${specificPlant.scientific_name}</h3>
